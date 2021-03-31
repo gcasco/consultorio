@@ -17,6 +17,10 @@ public interface IConsultorioService {
     void deleteDentist(Long idDentist);
     void editDentist(Long idDentist, String name, String lastName, String address, Long dni, Date birthDate, Long phone, String mail, String codeMP);
 
+    void addDiaryToDentist(Diary diary, Long idDentist) throws EntityNotFoundException;
+
+    void addDiaryListToDentist(List<Diary> diarys, Long idDentist);
+
     List<Patient> getAllPatients();
     Patient getPatient(Long idPatient) throws EntityNotFoundException;
     void savePatient(Patient patient);

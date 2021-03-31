@@ -19,6 +19,7 @@ public class Diary {
     private Date endingTime;
 
     @ManyToOne
+    @JoinColumn(name = "idDentist", nullable = false)
     private Dentist dentist;
     @OneToMany(mappedBy = "diary")
     private List<Turn> turns;

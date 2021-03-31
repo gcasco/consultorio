@@ -59,6 +59,20 @@ public class ConsultorioService implements IConsultorioService{
     }
 
     @Override
+    public void addDiaryToDentist(Diary diary, Long idDentist) throws EntityNotFoundException {
+        Dentist dentist = dentistRepository.findById(idDentist).orElseThrow(()->new EntityNotFoundException("El dentista ID "+idDentist+" no existe"));
+        List<Diary> tmpDiarys = dentist.getDiarys();
+        tmpDiarys.add(diary);
+        dentist.setDiarys(tmpDiarys);
+        dentistRepository.save(dentist);
+
+    }
+
+
+    @Override
+    public void addDiaryListToDentist(List<Diary> diarys, Long idDentist){}
+
+    @Override
     public List<Patient> getAllPatients() {
         return patientRepository.findAll();
     }
